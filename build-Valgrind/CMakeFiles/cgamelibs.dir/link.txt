@@ -1,0 +1,2 @@
+/usr/sbin/ar qc libcgamelibs.a CMakeFiles/cgamelibs.dir/src/cgamelibs.c.o
+/usr/sbin/ranlib libcgamelibs.a

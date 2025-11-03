@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20251103-1820-Experimental"
+	Name="(empty)"
+	Generator="ctest-4.0.20250601-g14ba99b-dirty"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="DESKTOP-IOGDMCQ"
+	OSRelease="6.6.87.1-microsoft-standard-WSL2"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Mon Apr 21 17:08:54 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 9 185H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="11"
+	TotalVirtualMemory="4096"
+	TotalPhysicalMemory="15746"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3072"
+	>
+	<Configure>
+		<StartDateTime>Nov 03 13:20 EST</StartDateTime>
+		<StartConfigureTime>1762194030</StartConfigureTime>
+		<ConfigureCommand>"/usr/sbin/cmake" "-DCMAKE_BUILD_TYPE=Debug" "-Dh5fortran_BUILD_TESTING=ON" "-GUnix Makefiles" "-S/home/andrew/Repos/cgamelibs" "-B/home/andrew/Repos/cgamelibs/build-Valgrind"</ConfigureCommand>
+		<Log>-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/andrew/Repos/cgamelibs/build-Valgrind
+</Log>
+		<ConfigureStatus>0</ConfigureStatus>
+		<EndDateTime>Nov 03 13:20 EST</EndDateTime>
+		<EndConfigureTime>1762194030</EndConfigureTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Configure>
+</Site>

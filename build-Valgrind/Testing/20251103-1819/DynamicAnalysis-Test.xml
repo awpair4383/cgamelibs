@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20251103-1819-Experimental"
+	Name="(empty)"
+	Generator="ctest-4.0.20250601-g14ba99b-dirty"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="DESKTOP-IOGDMCQ"
+	OSRelease="6.6.87.1-microsoft-standard-WSL2"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Mon Apr 21 17:08:54 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 9 185H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="11"
+	TotalVirtualMemory="4096"
+	TotalPhysicalMemory="15746"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3072"
+	>
+	<Testing>
+		<StartDateTime>Nov 03 13:19 EST</StartDateTime>
+		<StartTestTime>1762193985</StartTestTime>
+		<TestList>
+			<Test>./tests/test_cgamelibs</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>test_cgamelibs</Name>
+			<Path>./tests</Path>
+			<FullName>./tests/test_cgamelibs</FullName>
+			<FullCommandLine>/usr/sbin/valgrind "--log-file=/home/andrew/Repos/cgamelibs/build-Valgrind/Testing/Temporary/MemoryChecker.1.log" "--leak-check=full" "/home/andrew/Repos/cgamelibs/build-Valgrind/tests/test_cgamelibs"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.435075</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/sbin/valgrind "--log-file=/home/andrew/Repos/cgamelibs/build-Valgrind/Testing/Temporary/MemoryChecker.1.log" "--leak-check=full" "/home/andrew/Repos/cgamelibs/build-Valgrind/tests/test_cgamelibs"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>==19388== Memcheck, a memory error detector
+==19388== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==19388== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==19388== Command: /home/andrew/Repos/cgamelibs/build-Valgrind/tests/test_cgamelibs
+==19388== Parent PID: 19370
+==19388== 
+==19388== 
+==19388== HEAP SUMMARY:
+==19388==     in use at exit: 0 bytes in 0 blocks
+==19388==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==19388== 
+==19388== All heap blocks were freed -- no leaks are possible
+==19388== 
+==19388== For lists of detected and suppressed errors, rerun with: -s
+==19388== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Nov 03 13:19 EST</EndDateTime>
+		<EndTestTime>1762193986</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

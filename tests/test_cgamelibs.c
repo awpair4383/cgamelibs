@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "cgamelibs.h"
 
 int main(void) {

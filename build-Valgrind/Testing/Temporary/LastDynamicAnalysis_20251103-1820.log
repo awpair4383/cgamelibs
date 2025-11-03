@@ -1,0 +1,18 @@
+Start testing: Nov 03 13:20 EST
+----------------------------------------------------------
+1/1 Testing: test_cgamelibs
+1/1 Test: test_cgamelibs
+Command: "/usr/sbin/valgrind" "--log-file=/home/andrew/Repos/cgamelibs/build-Valgrind/Testing/Temporary/MemoryChecker.1.log" "--leak-check=full" "/home/andrew/Repos/cgamelibs/build-Valgrind/tests/test_cgamelibs"
+Directory: /home/andrew/Repos/cgamelibs/build-Valgrind/tests
+"test_cgamelibs" start time: Nov 03 13:20 EST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.38 sec
+----------------------------------------------------------
+Test Passed.
+"test_cgamelibs" end time: Nov 03 13:20 EST
+"test_cgamelibs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 03 13:20 EST

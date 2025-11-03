@@ -1,0 +1,32 @@
+name: CMake and CTest CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create build directory
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+
+      - name: Build with CMake
+        run: |
+          cd build
+          cmake --build . --config Release
+
+      - name: Run tests with CTest
+        run: |
+          cd build
+          ctest --output-on-failure

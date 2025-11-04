@@ -6,6 +6,8 @@ project(cgamelibs C)
 # Specify the source files
 set(SOURCES
     src/cgamelibs.c
+    src/render/devices.c
+    src/render/window.c
 )
 
 # Specify the header files (if any)
@@ -15,6 +17,13 @@ set(HEADERS
 
 # Find Vulkan package
 find_package(Vulkan REQUIRED)
+
+# Check for Wayland support
+find_package(Wayland QUIET)
+
+if(Wayland_FOUND)
+    message(FATAL_ERROR "Wayland support is not allowed. Please disable Wayland support.")
+endif()
 
 # Create the library
 add_library(cgamelibs STATIC ${SOURCES} ${HEADERS})

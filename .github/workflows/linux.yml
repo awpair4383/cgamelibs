@@ -19,6 +19,12 @@ jobs:
         run: |
           sudo apt install valgrind
 
+      - name: Install vulkan
+        run: |
+          sudo add-apt-repository ppa:volkan/ppa
+          sudo apt update
+          sudo apt install vulkan-sdk
+
       - name: Create build directory
         run: |
           mkdir build

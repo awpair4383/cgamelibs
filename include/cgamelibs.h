@@ -74,13 +74,13 @@ typedef struct {
  *
  * @param window The game window
  */
-void init_devices(Window *window);
+void init_devices(Window *const window);
 
 /**
  * @brief Initializes GLFW and creates the window.
  * @param window A pointer to the Window to be initialized.
  */
-void init_window(Window *window, const uint16_t wPx, const uint16_t hPx); // should handle a maximum of 65535 X 65535, consider making these floats for subpixel precision/rendering.
+void init_window(Window *const window, const uint16_t wPx, const uint16_t hPx); // should handle a maximum of 65535 X 65535, consider making these floats for subpixel precision/rendering.
 
 /**
  * @brief Creates a Vulkan surface associated with the specified window.
@@ -93,7 +93,7 @@ void init_window(Window *window, const uint16_t wPx, const uint16_t hPx); // sho
  * @param window Pointer to a `Window` struct containing the GLFW
  * window handle and Vulkan instance for which the surface is created.
  */
-void init_surface(Window *window);
+void init_surface(Window *const window);
 
 /**
  * @brief Initializes the Vulkan instance for the specified window.
@@ -106,7 +106,7 @@ void init_surface(Window *window);
  *            will be initialized. This instance is essential for all Vulkan
  *            operations related to this window.
  */
-void init_vkinstance(Window *win);
+void init_vkinstance(Window *const win);
 
 /**
  * @brief Frees Vulkan physical device handles previously allocated by init_devices.
@@ -123,7 +123,7 @@ void init_vkinstance(Window *win);
  *
  * @param[in,out] window Pointer to the Window structure that owns the device array.
  */
-void deinit_devices(Window *window);
+void deinit_devices(Window *const window);
 
 /**
  * @brief Cleans up and destroys the Vulkan surface associated with the window.
@@ -136,7 +136,7 @@ void deinit_devices(Window *window);
  * instance (`vkInstance`) and the surface handle 
  * (`vkSurfaceKHR`) to be destroyed.
  */
-void deinit_surface(Window *window);
+void deinit_surface(Window *const window);
 
 /**
  * @brief Destroys the GLFW window and terminates the GLFW library.
@@ -148,7 +148,7 @@ void deinit_surface(Window *window);
  * @param window Pointer to the `Window` struct containing the GLFW 
  * window handle (`glfwWindow`).
  */
-void deinit_window(Window *window);
+void deinit_window(Window *const window);
 
 /**
  * @brief Cleans up and destroys the Vulkan instance.
@@ -160,5 +160,5 @@ void deinit_window(Window *window);
  * @param window Pointer to the `Window` struct containing the Vulkan 
  * instance (`vkInstance`) to be destroyed.
  */
-void deinit_vkinstance(Window *win);
+void deinit_vkinstance(Window *const win);
 #endif

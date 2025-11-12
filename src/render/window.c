@@ -9,7 +9,7 @@
  * @brief Initializes GLFW and creates the window.
  * @param window A pointer to the GLFW window pointer to be initialized.
  */
-void init_window(Window *window, const uint16_t wPx, const uint16_t hPx) { // should handle a maximum of 65535 X 65535, consider making these floats for subpixel precision/rendering.
+void init_window(Window *const window, const uint16_t wPx, const uint16_t hPx) { // should handle a maximum of 65535 X 65535, consider making these floats for subpixel precision/rendering.
     if (!glfwInit()) {
         fprintf(stderr, "Failed to initialize GLFW\n");
         exit(EXIT_FAILURE);
@@ -44,7 +44,7 @@ void init_window(Window *window, const uint16_t wPx, const uint16_t hPx) { // sh
  * @param window Pointer to the `Window` struct containing the GLFW 
  * window handle (`glfwWindow`).
  */
-void deinit_window(Window *window){
+void deinit_window(Window *const window){
     // 1. Destroy the specific window handle
     if (window->glfwWindow) {
         glfwDestroyWindow(window->glfwWindow);

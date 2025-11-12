@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // --- Helper Function for Instance Creation ---
-void init_vkinstance(Window *win) {
+void init_vkinstance(Window *const win) {
     // 1. Specify application info (Correct, no change)
     VkApplicationInfo appInfo = {};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -57,7 +57,7 @@ void init_vkinstance(Window *win) {
  * @param window Pointer to the `Window` struct containing the Vulkan 
  * instance (`vkInstance`) to be destroyed.
  */
-void deinit_vkinstance(Window *win) {
+void deinit_vkinstance(Window *const win) {
     // The vkDestroyInstance function destroys the specified VkInstance.
     // All child objects (like the surface) must have been destroyed 
     // before this function is called.

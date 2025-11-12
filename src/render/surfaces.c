@@ -17,7 +17,7 @@
  *               creation. The function modifies the `vkSurfaceKHR` member 
  *               to store the created surface handle.
  */
-void init_surface(Window *window) {
+void init_surface(Window *const window) {
     // GLFW has a built-in function to create a surface from the window
     int retval = glfwCreateWindowSurface(window->vkInstance, window->glfwWindow, NULL, &window->vkSurfaceKHR);
     if (retval != VK_SUCCESS) {
@@ -37,7 +37,7 @@ void init_surface(Window *window) {
  * instance (`vkInstance`) and the surface handle 
  * (`vkSurfaceKHR`) to be destroyed.
  */
-void deinit_surface(Window *window) {
+void deinit_surface(Window *const window) {
     // The surface is an object of the Instance. 
     // It must be destroyed before the Instance is destroyed.
     vkDestroySurfaceKHR(window->vkInstance, window->vkSurfaceKHR, NULL);

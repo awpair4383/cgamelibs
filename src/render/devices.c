@@ -11,7 +11,7 @@
  * @param window The game window
  * @param window->vkPhysicalDevs A pointer to a VkPhysicalDevice* to store the dynamically allocated array.
  */
-void init_devices(Window *window) {
+void init_devices(Window *const window) {
     // Vulkan uses uint32_t for counts, but we'll use 'unsigned' as requested
     VkResult res;
 
@@ -75,7 +75,7 @@ void init_devices(Window *window) {
  *
  * @param[in,out] window Pointer to the Window structure that owns the device array.
  */
-void deinit_devices(Window *window) {
+void deinit_devices(Window *const window) {
     if (window == NULL) return;
 
     if (window->vkPhysicalDevs) {

@@ -30,8 +30,10 @@ void test_hashtable_basic_operations() {
 	assert(ht_search(map, "Test2") != NULL); // Assert existence of test2
 
 	// Validate that the pointers returned correspond to the inserted data
-	assert(ht_search(map, "Test1") == &test1); // Verify correct pointer for test1
-	assert(ht_search(map, "Test2") == &test2); // Verify correct pointer for test2
+	assert(ht_search(map, "Test1") ==
+		   &test1); // Verify correct pointer for test1
+	assert(ht_search(map, "Test2") ==
+		   &test2); // Verify correct pointer for test2
 
 	// Assert that the number of elements in the hash table is correct
 	assert(map->element_count == 2); // Expecting 2 elements in the table
@@ -85,8 +87,9 @@ void test_hashtable_deletion() {
 
 	// Delete the inserted entry
 	ht_delete(map, "Test1");
-	assert(ht_search(map, "Test1") == NULL); // Make sure the deleted key is not found
-	assert(map->element_count == 0);		 // The count should now be 0
+	assert(ht_search(map, "Test1") ==
+		   NULL);					 // Make sure the deleted key is not found
+	assert(map->element_count == 0); // The count should now be 0
 
 	// Clean up allocated resources
 	ht_deinit_table(map); // Deinitialize the hash table

@@ -19,10 +19,11 @@
  */
 void init_surface(Window *const window) {
 	// GLFW has a built-in function to create a surface from the window
-	int retval = glfwCreateWindowSurface(window->vkInstance, window->glfwWindow, NULL,
-										 &window->vkSurfaceKHR);
+	int retval = glfwCreateWindowSurface(window->vkInstance, window->glfwWindow,
+										 NULL, &window->vkSurfaceKHR);
 	if (retval != VK_SUCCESS) {
-		fprintf(stderr, "Failed to create window surface!\nReason: %d\n", retval);
+		fprintf(stderr, "Failed to create window surface!\nReason: %d\n",
+				retval);
 		exit(EXIT_FAILURE);
 	}
 }

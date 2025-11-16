@@ -23,10 +23,11 @@ void ht_deinit_table(HtTable *tab) {
 	for (unsigned int i = 0; i < tab->bucket_count; ++i) {
 		HtNode *currNode = tab->buckets[i];
 		while (currNode != NULL) {
-			HtNode *tempNode = currNode; // Keep track of the current node to free it afterwards
-			currNode = currNode->pnext;	 // Move to the next node
-			htfree(tempNode->key);		 // Free the key
-			htfree(tempNode);			 // Free the current node
+			HtNode *tempNode =
+				currNode; // Keep track of the current node to free it afterwards
+			currNode = currNode->pnext; // Move to the next node
+			htfree(tempNode->key);		// Free the key
+			htfree(tempNode);			// Free the current node
 		}
 	}
 
@@ -116,7 +117,8 @@ bool ht_delete(HtTable *tab, void *key) {
 		if (strcmp((const char *) currNode->key, (const char *) key) == 0) {
 			// If the node to delete is the head of the list
 			if (currNode == tab->buckets[idx]) {
-				tab->buckets[idx] = currNode->pnext; // Update head to the next node
+				tab->buckets[idx] =
+					currNode->pnext; // Update head to the next node
 			} else {
 				// If it's a middle or last node
 				prevNode->pnext = currNode->pnext; // Bypass the current node
@@ -159,7 +161,8 @@ void *ht_search_s(HtTable *tab, void *key, size_t keylen) {
 	HtNode *bucketHead = tab->buckets[bucketIndex];
 	while (bucketHead != NULL) {
 		// Compare the actual string values using strncmp
-		if (strncmp((const char *) bucketHead->key, (const char *) key, keylen) == 0) {
+		if (strncmp((const char *) bucketHead->key, (const char *) key,
+					keylen) == 0) {
 			// Key is found in the hashMap
 			return bucketHead->value; // Return the associated value
 		}

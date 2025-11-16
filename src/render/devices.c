@@ -24,33 +24,44 @@ void init_devices(Window *const window) {
 	// --- 1. Get the number of physical devices (Count phase) ---
 	// Note: We use a local uint32_t 'count' to ensure type compatibility with
 	// vkEnumeratePhysicalDevices
-	res = vkEnumeratePhysicalDevices(window->vkInstance, &window->vkPhysicalDevCount, NULL);
+	res = vkEnumeratePhysicalDevices(window->vkInstance,
+									 &window->vkPhysicalDevCount, NULL);
 
 	if (res != VK_SUCCESS) {
-		fprintf(stderr, "Error: Failed to query physical device count (VkResult: %d).\n", res);
+		fprintf(
+			stderr,
+			"Error: Failed to query physical device count (VkResult: %d).\n",
+			res);
 		return;
 	}
 
 	if (window->vkPhysicalDevCount == 0) {
-		fprintf(stderr, "Warning: No physical devices with Vulkan support found.\n");
+		fprintf(stderr,
+				"Warning: No physical devices with Vulkan support found.\n");
 		return;
 	}
 
 	// Allocate memory on the heap (The fix for the stack allocation error)
-	window->vkPhysicalDevs = malloc(window->vkPhysicalDevCount * sizeof(VkPhysicalDevice));
+	window->vkPhysicalDevs =
+		malloc(window->vkPhysicalDevCount * sizeof(VkPhysicalDevice));
 	if (window->vkPhysicalDevs == NULL) {
-		fprintf(stderr, "Fatal Error: Failed to allocate memory for %u physical devices.\n",
-				window->vkPhysicalDevCount);
+		fprintf(
+			stderr,
+			"Fatal Error: Failed to allocate memory for %u physical devices.\n",
+			window->vkPhysicalDevCount);
 		return;
 	}
 
 	// --- 3. Get the physical devices (Population phase) ---
 	// Pass the allocated array pointer to retrieve the device handles
-	res = vkEnumeratePhysicalDevices(window->vkInstance, &window->vkPhysicalDevCount,
+	res = vkEnumeratePhysicalDevices(window->vkInstance,
+									 &window->vkPhysicalDevCount,
 									 window->vkPhysicalDevs);
 
 	if (res != VK_SUCCESS && res != VK_INCOMPLETE) {
-		fprintf(stderr, "Error: Failed to enumerate physical devices (VkResult: %d).\n", res);
+		fprintf(stderr,
+				"Error: Failed to enumerate physical devices (VkResult: %d).\n",
+				res);
 		// Clean up allocated memory on failure
 		free(window->vkPhysicalDevs);
 		window->vkPhysicalDevs = NULL;
@@ -62,7 +73,8 @@ void init_devices(Window *const window) {
 		window->vkPhysicalDevCount = (unsigned) window->vkPhysicalDevCount;
 	}
 
-	printf("Successfully found and retrieved %u physical device(s).\n", window->vkPhysicalDevCount);
+	printf("Successfully found and retrieved %u physical device(s).\n",
+		   window->vkPhysicalDevCount);
 }
 
 /**

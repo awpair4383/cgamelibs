@@ -51,10 +51,10 @@ void mainLoop(GLFWwindow *window) {
 		// Process all pending events like window closing, key presses, etc.
 		glfwPollEvents();
 
-		// **NOTE:** Since we haven't set up a Vulkan rendering pipeline (Instance,
-		// Swapchain, Render Pass, etc.) and aren't clearing the screen,
-		// the window will appear **blank** or with residual desktop content,
-		// which fulfills the requirement of this basic example.
+		// **NOTE:** Since we haven't set up a Vulkan rendering pipeline
+		// (Instance, Swapchain, Render Pass, etc.) and aren't clearing the
+		// screen, the window will appear **blank** or with residual desktop
+		// content, which fulfills the requirement of this basic example.
 	}
 
 	glfwTerminate();

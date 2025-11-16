@@ -21,12 +21,13 @@ void init_window(Window *const window, const uint16_t wPx,
 	// Tell GLFW not to create an OpenGL context since we are using Vulkan
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-	// We disable resizing for simplicity, as handling window resizing is complex
-	// in Vulkan
+	// We disable resizing for simplicity, as handling window resizing is
+	// complex in Vulkan
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
 	// Create the window
-	window->glfwWindow = glfwCreateWindow(wPx, hPx, "Vulkan Hello World", NULL, NULL);
+	window->glfwWindow =
+		glfwCreateWindow(wPx, hPx, "Vulkan Hello World", NULL, NULL);
 	glfwSetWindowSize(window->glfwWindow, wPx, hPx);
 
 	if (!window->glfwWindow) {

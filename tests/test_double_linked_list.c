@@ -29,6 +29,8 @@ void test_insert_after() {
 	assert(head.pnext->pprev == &head);
 	assert(head.pnext->pnext == NULL);
 
+    free(newNode);
+
 	printf("Passed test_insert_after.\n");
 }
 
@@ -36,14 +38,14 @@ void test_delete_next() {
 	IntNode head;
 	IntNode_init(&head, 1);
 
-	IntNode *secondNode = malloc(sizeof(IntNode));
-	IntNode_init(secondNode, 2);
-	IntNode_insert_after(&head, secondNode);
+	IntNode secondNode;
+	IntNode_init(&secondNode, 2);
+	IntNode_insert_after(&head, &secondNode);
 
-	IntNode *thirdNode = malloc(sizeof(IntNode));
-	IntNode_init(thirdNode, 3);
+	IntNode thirdNode;
+	IntNode_init(&thirdNode, 3);
 	IntNode_insert_after(head.pnext,
-						 thirdNode); // Now head --> secondNode --> thirdNode
+						 &thirdNode); // Now head --> secondNode --> thirdNode
 
 	// Initial state
 	assert(head.pnext != NULL);		   // There is a second node
@@ -52,13 +54,11 @@ void test_delete_next() {
 	assert(head.pnext->pnext->pprev == head.pnext); // Check previous link
 
 	// Perform deletion
-	IntNode *removed = IntNode_remove_next(&head); // Deletes secondNode
-
-	if (removed) free(removed);
+	IntNode_remove_next(&secondNode); // Deletes secondNode
 
 	// After deletion
 	assert(head.pnext != NULL);	   // Head still has a next node
-	assert(head.pnext->data == 3); // Now it points directly to the third node
+	assert(head.pnext->data == 2); // Now it points directly to the third node
 	assert(head.pnext->pnext == NULL); // Third node's next should be NULL
 	assert(head.pnext->pprev ==
 		   &head); // Third node's previous should point to head
@@ -76,6 +76,9 @@ void test_has_next() {
 	IntNode_insert_after(&head, newNode);
 
 	assert(IntNode_has_next(&head)); // Now there should be a next node
+
+    free(newNode);
+
 	printf("Passed test_has_next.\n");
 }
 

@@ -33,3 +33,4 @@ add_test_executable(test_cgamelibs test_cgamelibs.c)
 # ----------------------------------------------------------------------
 add_test_executable(test_hashtable test_hashtable.c)
 add_test_executable(test_vector   test_vector.c)   # <-- new vector test
+add_test_executable(test_single_linked_list test_single_linked_list.c)

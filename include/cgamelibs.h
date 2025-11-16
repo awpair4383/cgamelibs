@@ -80,7 +80,10 @@ void init_devices(Window *const window);
  * @brief Initializes GLFW and creates the window.
  * @param window A pointer to the Window to be initialized.
  */
-void init_window(Window *const window, const uint16_t wPx, const uint16_t hPx); // should handle a maximum of 65535 X 65535, consider making these floats for subpixel precision/rendering.
+void init_window(Window *const window, const uint16_t wPx,
+                 const uint16_t hPx); // should handle a maximum of 65535 X
+                                      // 65535, consider making these floats for
+                                      // subpixel precision/rendering.
 
 /**
  * @brief Creates a Vulkan surface associated with the specified window.
@@ -109,10 +112,12 @@ void init_surface(Window *const window);
 void init_vkinstance(Window *const win);
 
 /**
- * @brief Frees Vulkan physical device handles previously allocated by init_devices.
+ * @brief Frees Vulkan physical device handles previously allocated by
+ * init_devices.
  *
  * Frees the memory pointed to by window->vkPhysicalDevs and resets the count.
- * Safe to call multiple times; silently returns if window is NULL or vkPhysicalDevs is NULL.
+ * Safe to call multiple times; silently returns if window is NULL or
+ * vkPhysicalDevs is NULL.
  *
  * Example usage:
  * @code
@@ -121,19 +126,20 @@ void init_vkinstance(Window *const win);
  * deinit_devices(&window);
  * @endcode
  *
- * @param[in,out] window Pointer to the Window structure that owns the device array.
+ * @param[in,out] window Pointer to the Window structure that owns the device
+ * array.
  */
 void deinit_devices(Window *const window);
 
 /**
  * @brief Cleans up and destroys the Vulkan surface associated with the window.
  *
- * This function uses vkDestroySurfaceKHR to release the resources held by 
- * the Vulkan surface handle stored in the `Window` struct. This must be 
+ * This function uses vkDestroySurfaceKHR to release the resources held by
+ * the Vulkan surface handle stored in the `Window` struct. This must be
  * called before the Vulkan instance itself is destroyed.
  *
- * @param window Pointer to the `Window` struct containing the Vulkan 
- * instance (`vkInstance`) and the surface handle 
+ * @param window Pointer to the `Window` struct containing the Vulkan
+ * instance (`vkInstance`) and the surface handle
  * (`vkSurfaceKHR`) to be destroyed.
  */
 void deinit_surface(Window *const window);
@@ -145,7 +151,7 @@ void deinit_surface(Window *const window);
  * and then terminates the GLFW library, which must be the last step
  * of any GLFW cleanup.
  *
- * @param window Pointer to the `Window` struct containing the GLFW 
+ * @param window Pointer to the `Window` struct containing the GLFW
  * window handle (`glfwWindow`).
  */
 void deinit_window(Window *const window);
@@ -153,11 +159,11 @@ void deinit_window(Window *const window);
 /**
  * @brief Cleans up and destroys the Vulkan instance.
  *
- * This function uses vkDestroyInstance to release all resources associated 
- * with the Vulkan instance handle stored in the `Window` struct. This is 
+ * This function uses vkDestroyInstance to release all resources associated
+ * with the Vulkan instance handle stored in the `Window` struct. This is
  * typically the *last* Vulkan-related cleanup step before application exit.
  *
- * @param window Pointer to the `Window` struct containing the Vulkan 
+ * @param window Pointer to the `Window` struct containing the Vulkan
  * instance (`vkInstance`) to be destroyed.
  */
 void deinit_vkinstance(Window *const win);

@@ -3,3 +3,4 @@ build-Valgrind/
 .cache/
 vklog.txt
 Testing/
+.vscode/

@@ -2,8 +2,10 @@
 #include "hashtable/hash.h"
 
 DEF_HASH_FN_NULLTERM(unsigned);
+DEF_HASH_FN_SIZED(unsigned);
 
 #define hash_key(key) hash_unsigned_nullterm(key)
+#define hash_key_s(key, len) hash_unsigned_sized(key, len)
 
 void ht_init_table(HtTable *tab, unsigned bucket_count)
 {
@@ -38,9 +40,9 @@ void ht_deinit_table(HtTable *tab)
     tab->element_count = 0; // Reset element count
 }
 
-bool ht_insert_s(HtTable *tab, char *key, size_t keylen, void *value)
+bool ht_insert_s(HtTable *tab, void *key, size_t keylen, void *value)
 {
-    unsigned int idx = hash_key(key) % tab->bucket_count;
+    unsigned int idx = hash_key_s(key, keylen) % tab->bucket_count;
 
     // Create a new node.
     HtNode *new_node = htmalloc(sizeof(HtNode));
@@ -80,7 +82,7 @@ bool ht_insert_s(HtTable *tab, char *key, size_t keylen, void *value)
     return true;
 }
 
-bool ht_insert(HtTable *tab, void *key, void *value)
+bool ht_insert(HtTable *tab, char *key, void *value)
 {
     size_t len = strlen(key);
     return ht_insert_s(tab, key, len, value);

@@ -7,7 +7,7 @@ void test_hashtable()
     // Initialize the hash table
     HtTable *map = malloc(sizeof(HtTable));
     assert(map != NULL);  // Ensure allocation was successful
-    ht_init_table(map, 16);
+    ht_init_table(map, 4);
 
     // Insert values
     assert(ht_insert(map, "Yogaholic", "Anjali"));
@@ -33,6 +33,24 @@ void test_hashtable()
     // Cleanup
     ht_deinit_table(map);
     free(map);
+}
+
+struct test_t {
+    int v1;
+    int v2;
+};
+
+void test_hashtable2() {
+    // Initialize the hash table
+    HtTable *map = malloc(sizeof(HtTable));
+    assert(map != NULL);  // Ensure allocation was successful
+    ht_init_table(map, 4);
+
+    struct test_t test = {1, 2};
+    struct test_t test2 = {3, 4};
+
+    ht_insert_s(map, &test, sizeof(test), &test);
+    ht_insert_s(map, &test2, sizeof(test2), &test2);
 }
 
 int main()

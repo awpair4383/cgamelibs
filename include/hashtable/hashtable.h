@@ -13,23 +13,24 @@
 // Struct definition for a node in the hash table's linked list
 typedef struct HtNode
 {
-    char *key;   // Key for the hash table entry
-    void *value;          // Value associated with the key
-    struct HtNode *pnext; // Pointer to the next node for handling collisions
+    char *key;              // Key for the hash table entry (null-terminated string)
+    void *value;           // Pointer to the value associated with the key
+    struct HtNode *pnext;  // Pointer to the next node for handling collisions
 } HtNode;
 
 // Struct definition for the hash table itself
 typedef struct HtTable
 {
-    HtNode **buckets;       // Array of pointers to linked list heads, representing hash table buckets
-    unsigned bucket_count;  // Number of buckets in the hash table
-    unsigned element_count; // Current number of elements in the hash table
+    HtNode **buckets;       // Array of pointers to linked list heads representing hash table buckets
+    unsigned bucket_count;  // Total number of buckets in the hash table
+    unsigned element_count; // Current number of key-value pairs in the hash table
 } HtTable;
 
 // Function prototypes for hash table operations
 
 /**
- * Initializes a hash table with a specified number of buckets.
+ * Initializes a hash table with the specified number of buckets. Allocates memory for the buckets and sets
+ * the initial element count to zero.
  *
  * @param tab Pointer to the hash table to be initialized.
  * @param bucket_count Number of buckets to create in the hash table.
@@ -37,46 +38,50 @@ typedef struct HtTable
 void ht_init_table(HtTable *tab, unsigned bucket_count);
 
 /**
- * Inserts a key-value pair into the hash table.
+ * Inserts a key-value pair into the hash table. If the key already exists, the existing value will be updated.
  *
  * @param tab Pointer to the hash table.
- * @param key The key to insert (must be null-terminated).
- * @param value The value associated with the key.
- * @return True if the insertion is successful, false otherwise.
+ * @param key The key to insert (must be a null-terminated string).
+ * @param value Pointer to the value associated with the key.
+ * @return True if the insertion (or update) is successful, false otherwise.
  */
-bool ht_insert(HtTable *tab, void *key, void *value);
+bool ht_insert(HtTable *tab, char *key, void *value);
 
 /**
- * Inserts a key-value pair into the hash table, with a given key size
+ * Inserts a key-value pair into the hash table using a specified key size. This is useful for non-string keys. 
+ * Any previously associated value with the key will be replaced.
  *
  * @param tab Pointer to the hash table.
- * @param key The key to insert (must be null-terminated).
- * @param keylen The length in bytes of the key (not counting the null terminator).
- * @param value The value associated with the key.
+ * @param key Pointer to the key to insert.
+ * @param keylen The length in bytes of the key (excluding the null terminator).
+ * @param value Pointer to the value associated with the key.
  * @return True if the insertion is successful, false otherwise.
  */
-bool ht_insert_s(HtTable *tab, char *key, size_t keylen, void *value);
+bool ht_insert_s(HtTable *tab, void *key, size_t keylen, void *value);
 
 /**
- * Deletes a key-value pair from the hash table.
+ * Deletes a key-value pair from the hash table. 
+ * If the key is not found, no action is performed, and false is returned.
  *
  * @param tab Pointer to the hash table.
- * @param key The key to delete.
+ * @param key Pointer to the key to delete (must be a null-terminated string).
  * @return True if the deletion is successful, false if the key was not found.
  */
 bool ht_delete(HtTable *tab, void *key);
 
 /**
- * Searches for a value by key in the hash table.
+ * Searches for a value associated with a given key in the hash table.
+ * If the key is not found, NULL is returned.
  *
  * @param tab Pointer to the hash table.
- * @param key The key to search for.
+ * @param key Pointer to the key to search for (must be a null-terminated string).
  * @return Pointer to the value associated with the key, or NULL if not found.
  */
 void *ht_search(HtTable *tab, void *key);
 
 /**
- * Deinitializes a hash table and frees its resources.
+ * Deinitializes a hash table, freeing all allocated resources. This includes the memory for 
+ * keys, values, and the nodes in the linked lists.
  *
  * @param tab Pointer to the hash table to deinitialize.
  */

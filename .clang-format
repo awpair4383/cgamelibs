@@ -8,7 +8,7 @@ AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
-ColumnLimit: 100
+ColumnLimit: 80
 MaxEmptyLinesToKeep: 1
 SpaceBeforeParens: ControlStatements
 SpaceAfterCStyleCast: true

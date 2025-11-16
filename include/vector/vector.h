@@ -2,7 +2,6 @@
 #define VECTOR_H
 
 #include <stddef.h>
-#include <stdlib.h> /* malloc, free */
 #include <string.h>
 
 

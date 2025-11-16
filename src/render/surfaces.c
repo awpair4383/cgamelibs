@@ -38,11 +38,11 @@ void init_surface(Window *const window) {
  * (`vkSurfaceKHR`) to be destroyed.
  */
 void deinit_surface(Window *const window) {
-    // The surface is an object of the Instance. 
-    // It must be destroyed before the Instance is destroyed.
-    vkDestroySurfaceKHR(window->vkInstance, window->vkSurfaceKHR, NULL);
-    
-    // Optional: Set the handle to VK_NULL_HANDLE after destruction 
-    // to prevent accidental use (often a good practice).
-    window->vkSurfaceKHR = VK_NULL_HANDLE; 
+    if (window->vkSurfaceKHR != VK_NULL_HANDLE) {
+        // Destroy the Vulkan surface
+        vkDestroySurfaceKHR(window->vkInstance, window->vkSurfaceKHR, NULL);
+        
+        // Set the handle to VK_NULL_HANDLE to prevent accidental use
+        window->vkSurfaceKHR = VK_NULL_HANDLE; 
+    }
 }

@@ -1,9 +1,6 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "cgamelibs.h"
 
 // Window dimensions
@@ -34,7 +31,7 @@ int main() {
     // 3. Create the window surface
     init_surface(&window);
     
-    mainLoop(window.glfwWindow);
+    //mainLoop(window.glfwWindow);
     
     // 4. Cleanup Vulkan and GLFW resources
     deinit_surface(&window);

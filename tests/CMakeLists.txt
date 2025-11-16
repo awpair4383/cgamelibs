@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(cgamelibs)
+
 # Add the test executable
 add_executable(test_cgamelibs test_cgamelibs.c)
 
@@ -29,3 +32,13 @@ function(add_test_executable test_name source_file)
 endfunction()
 
 add_test_executable(test_hashtable test_hashtable.c)
+
+# Set AddressSanitizer flags for Debug builds
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    # Enable AddressSanitizer
+    target_compile_options(test_cgamelibs PRIVATE -fsanitize=address)
+    target_link_libraries(test_cgamelibs PRIVATE -fsanitize=address)
+
+    target_compile_options(test_hashtable PRIVATE -fsanitize=address)
+    target_link_libraries(test_hashtable PRIVATE -fsanitize=address)
+endif()
